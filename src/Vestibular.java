@@ -1,6 +1,6 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Scanner;
@@ -146,10 +146,8 @@ public class Vestibular {
             arqEscrita.format(listaCursos.mostrar());
 
             arqEscrita.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Erro na abertura do arquivo:" + e.getMessage());
         }
     }
 
