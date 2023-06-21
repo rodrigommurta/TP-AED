@@ -119,11 +119,14 @@ public class Vestibular {
         desempate(listaCandidatos);
 
         for (Candidato candidato : listaCandidatos) {
-            if (!listaCursos.pesquisar(candidato.getCodCursoOp1()).inserirListaSelecionados(candidato)) {
-                listaCursos.pesquisar(candidato.getCodCursoOp1()).inserirFilaEspera(candidato);
+            Curso cursoOpcao1 = listaCursos.pesquisar(candidato.getCodCursoOp1());
+            Curso cursoOpcao2 = listaCursos.pesquisar(candidato.getCodCursoOp2());
 
-                if (!listaCursos.pesquisar(candidato.getCodCursoOp2()).inserirListaSelecionados(candidato)) {
-                    listaCursos.pesquisar(candidato.getCodCursoOp2()).inserirFilaEspera(candidato);
+            if (!cursoOpcao1.inserirListaSelecionados(candidato)) {
+                cursoOpcao1.inserirFilaEspera(candidato);
+
+                if (!cursoOpcao2.inserirListaSelecionados(candidato)) {
+                    cursoOpcao2.inserirFilaEspera(candidato);
                 }
             }
         }
